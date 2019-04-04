@@ -1,13 +1,14 @@
-import React from 'react';
-import ContactDetails from './ContactDetails';
+import React from "react";
+import ContactDetails from "./ContactDetails";
+import ContactSummary from "./ContactSummary";
 
-const ContactList = () => {
+const ContactList = ({ contacts }) => {
   return (
-    <div className=''>
-      <ContactDetails />
-      <ContactDetails />
-      <ContactDetails />
-      <ContactDetails />
+    <div>
+      {contacts &&
+        contacts.map(contact => {
+          return <ContactDetails contact={contact} key={contact.id} />;
+        })}
     </div>
   );
 };
