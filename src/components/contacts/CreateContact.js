@@ -76,11 +76,20 @@ class CreateContact extends Component {
           </div>
 
           <div className='field'>
-            <label htmlFor='companyname'>Company Name</label>
+            <label htmlFor='companyName'>Company Name</label>
             <input
               type='text'
-              id='companyname'
+              id='companyName'
               placeholder='CubeX Inc.'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='field'>
+            <label htmlFor='photo'>Photo URL</label>
+            <input
+              type='text'
+              id='photo'
+              placeholder='https://randomuser.me/api/portraits/women/60.jpg'
               onChange={this.handleChange}
             />
           </div>
