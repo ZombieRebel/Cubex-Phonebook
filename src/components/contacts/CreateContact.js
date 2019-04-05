@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import { createContact } from '../../store/actions/contactActions';
+import { connect } from 'react-redux';
 
 class CreateContact extends Component {
   state = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    companyName: "",
-    photo: ""
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    companyName: '',
+    photo: ''
   };
 
   handleChange = e => {
@@ -18,74 +20,84 @@ class CreateContact extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
+    //console.log(this.state);
+    this.props.createContact(this.state);
   };
 
   render() {
     return (
-      <div className="ui container">
-        <form className="ui fluid form" onSubmit={this.handleSubmit}>
-          <h2 className="">Add new contact</h2>
+      <div className='ui container'>
+        <form className='ui fluid form' onSubmit={this.handleSubmit}>
+          <h2 className=''>Add new contact</h2>
 
-          <div className="field">
-            <label htmlFor="firstname">First Name</label>
+          <div className='field'>
+            <label htmlFor='firstname'>First Name</label>
             <input
-              type="text"
-              id="firstName"
+              type='text'
+              id='firstName'
               required
-              placeholder="First Name"
+              placeholder='First Name'
               onChange={this.handleChange}
             />
           </div>
 
-          <div className="field">
-            <label htmlFor="lastname">Last Name</label>
+          <div className='field'>
+            <label htmlFor='lastname'>Last Name</label>
             <input
-              type="text"
-              id="lastName"
-              placeholder="Last Name"
-              required
-              onChange={this.handleChange}
-            />
-          </div>
-
-          <div className="field">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="email@email.com"
+              type='text'
+              id='lastName'
+              placeholder='Last Name'
               required
               onChange={this.handleChange}
             />
           </div>
 
-          <div className="field">
-            <label htmlFor="phone">Phone</label>
+          <div className='field'>
+            <label htmlFor='email'>Email</label>
             <input
-              type="tel"
-              id="phone"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              placeholder="123-123-1234"
+              type='email'
+              id='email'
+              placeholder='email@email.com'
               required
               onChange={this.handleChange}
             />
           </div>
 
-          <div className="field">
-            <label htmlFor="companyname">Company Name</label>
+          <div className='field'>
+            <label htmlFor='phone'>Phone</label>
             <input
-              type="text"
-              id="companyname"
-              placeholder="CubeX Inc."
+              type='tel'
+              id='phone'
+              pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+              placeholder='123-123-1234'
+              required
               onChange={this.handleChange}
             />
           </div>
-          <button className="ui red button">Create Contact</button>
+
+          <div className='field'>
+            <label htmlFor='companyname'>Company Name</label>
+            <input
+              type='text'
+              id='companyname'
+              placeholder='CubeX Inc.'
+              onChange={this.handleChange}
+            />
+          </div>
+          <button className='ui red button'>Create Contact</button>
         </form>
       </div>
     );
   }
 }
 
-export default CreateContact;
+const mapDispatchToProps = dispatch => {
+  return {
+    createContact: contact => dispatch(createContact(contact))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateContact);
