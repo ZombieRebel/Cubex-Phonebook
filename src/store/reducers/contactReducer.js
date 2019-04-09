@@ -32,6 +32,9 @@ const contactReducer = (state = initState, action) => {
     case 'CREATE_CONTACT_ERROR':
       console.log('create project error', action.err);
       return state;
+    case 'EDIT_CONTACT':
+      console.log('edited contact', action.contact);
+      return state;
     default:
       return state;
   }

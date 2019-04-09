@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import EditContact from './EditContact';
 
 const ContactDetails = props => {
   const { contact } = props;
@@ -9,39 +10,41 @@ const ContactDetails = props => {
     return (
       <div className='ui container'>
         <div className='ui centered grid'>
-          <div className='middle aligned five column row'>
-            <div className='column'>
+          <div className='middle aligned six column row'>
+            <div className='three wide column'>
               <span className='header'>
                 <h4>{contact.firstName + ' ' + contact.lastName}</h4>
               </span>
             </div>
 
-            <div className='column meta'>
+            <div className='three wide column meta'>
               <span>
                 <h4>{contact.phone}</h4>
               </span>
             </div>
 
-            <div className='column description'>
+            <div className='two wide column description'>
               <h4>{contact.companyName}</h4>
             </div>
 
-            <div className='column description'>
+            <div className='three wide column description'>
               <h4>{contact.email}</h4>
             </div>
 
-            <div className='column'>
+            <div className='three wide column'>
               <img
-                className='ui tiny bordered rounded image'
+                className='ui medium bordered rounded image'
                 src={contact.photo}
               />
             </div>
           </div>
         </div>
+
+        <EditContact contact={contact} />
       </div>
     );
   } else {
-    return <p>Loadin project</p>;
+    return <p>Loading contact</p>;
   }
 };
 

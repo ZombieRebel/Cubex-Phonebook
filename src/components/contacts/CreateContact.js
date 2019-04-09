@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createContact } from '../../store/actions/contactActions';
 import { connect } from 'react-redux';
 
+
 class CreateContact extends Component {
   state = {
     firstName: '',
@@ -22,6 +23,7 @@ class CreateContact extends Component {
     e.preventDefault();
     //console.log(this.state);
     this.props.createContact(this.state);
+    this.props.history.push('/');
   };
 
   render() {
