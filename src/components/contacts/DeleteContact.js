@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { deleteContact } from "../../store/actions/contactActions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { deleteContact } from '../../store/actions/contactActions';
 
 class DeleteContact extends Component {
   state = {
@@ -9,16 +9,15 @@ class DeleteContact extends Component {
 
   handleSubmitDelete = e => {
     e.preventDefault();
-    //console.log('EDIT ', this.state.firstName);
     this.props.deleteContact(this.state);
-    this.props.history.push("/");
+    this.props.history.push('/');
   };
 
   render() {
     if (this.props.id) {
       return (
         <button
-          className="negative ui button"
+          className='negative ui button'
           name={this.props.name}
           onClick={this.handleSubmitDelete}
         >

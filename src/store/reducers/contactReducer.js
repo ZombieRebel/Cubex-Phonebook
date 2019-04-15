@@ -44,6 +44,12 @@ const contactReducer = (state = initState, action) => {
     case 'DELETE_CONTACT_ERROR':
       console.log('delete contact error', action.err);
       return state;
+    case 'SEARCH_CONTACT':
+      console.log('search contact', action.contacts, action.searchString);
+      return state;
+    case 'SEARCH_CONTACT_ERROR':
+      console.log('search contact error', action.err);
+      return state;
     default:
       return state;
   }

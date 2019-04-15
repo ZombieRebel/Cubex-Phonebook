@@ -50,3 +50,22 @@ export const deleteContact = contact => {
       });
   };
 };
+
+export const searchContact = (contacts, searchString) => {
+  return (dispatch, getState) => {
+    let filteredUsers = contacts.filter(contact => {
+      //console.log(contact.firstName.includes(searchString));
+      return (
+        contact.firstName.includes(searchString) ||
+        contact.lastName.includes(searchString) ||
+        contact.email.includes(searchString) ||
+        contact.phone.includes(searchString)
+      );
+    });
+    console.log('contacts ', contacts);
+    //console.log('Filtered users ', filteredUsers);
+    console.log('Filtered users ', filteredUsers);
+
+    dispatch({ type: 'SEARCH_CONTACT', filteredUsers }); //contact: contact
+  };
+};
